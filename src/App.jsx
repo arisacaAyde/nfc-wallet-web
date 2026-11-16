@@ -208,7 +208,7 @@ function App() {
             {/* Tarjeta 1: Sistemas Operativos */}
             <motion.div 
               whileHover={{ scale: 1.03 }} 
-              onClick={() => setSelectedImage('/marco-ciclo-android.jpg')} 
+              onClick={() => setSelectedImage('/marco-ciclo-android.png')} 
               className="cursor-pointer bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/50 transition-colors group relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500 rounded-full blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
@@ -221,7 +221,7 @@ function App() {
             {/* Tarjeta 2: Concurrencia */}
             <motion.div 
               whileHover={{ scale: 1.03 }} 
-              onClick={() => setSelectedImage('/marco-isolates.jpg')} 
+              onClick={() => setSelectedImage('/marco-isolates.png')} 
               className="cursor-pointer bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/50 transition-colors group relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-orange-500 rounded-full blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
@@ -234,7 +234,7 @@ function App() {
             {/* Tarjeta 3: Criptografía */}
             <motion.div 
               whileHover={{ scale: 1.03 }} 
-              onClick={() => setSelectedImage('/marco-boveda.jpg')} 
+              onClick={() => setSelectedImage('/marco-boveda.png')} 
               className="cursor-pointer bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/50 transition-colors group relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500 rounded-full blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
@@ -247,7 +247,7 @@ function App() {
             {/* Tarjeta 4: Blockchain */}
             <motion.div 
               whileHover={{ scale: 1.03 }} 
-              onClick={() => setSelectedImage('/marco-red-bsc.jpg')} 
+              onClick={() => setSelectedImage('/marco-red-bsc.png')} 
               className="cursor-pointer bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/50 transition-colors group relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500 rounded-full blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
@@ -260,7 +260,7 @@ function App() {
             {/* Tarjeta 5: NFC */}
             <motion.div 
               whileHover={{ scale: 1.03 }} 
-              onClick={() => setSelectedImage('/marco-nfc.jpg')} 
+              onClick={() => setSelectedImage('/marco-nfc.png')} 
               className="cursor-pointer bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/50 transition-colors group relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500 rounded-full blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
@@ -273,7 +273,7 @@ function App() {
             {/* Tarjeta 6: Seguridad Móvil */}
             <motion.div 
               whileHover={{ scale: 1.03 }} 
-              onClick={() => setSelectedImage('/marco-autenticacion.jpg')} 
+              onClick={() => setSelectedImage('/marco-autenticacion.png')} 
               className="cursor-pointer bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/50 transition-colors group relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-24 h-24 bg-red-500 rounded-full blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
