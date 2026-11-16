@@ -46,12 +46,12 @@ function App() {
       // Lógica para bajar (Flecha Abajo o Derecha)
       if ((e.key === 'ArrowDown' || e.key === 'ArrowRight') && currentIndex < secciones.length - 1) {
         e.preventDefault();
-        document.getElementById(secciones[currentIndex + 1])?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById(secciones[currentIndex + 1])?.scrollIntoView({ behavior: 'smooth',block: 'start' });
       } 
       // Lógica para subir (Flecha Arriba o Izquierda)
       else if ((e.key === 'ArrowUp' || e.key === 'ArrowLeft') && currentIndex > 0) {
         e.preventDefault();
-        document.getElementById(secciones[currentIndex - 1])?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById(secciones[currentIndex - 1])?.scrollIntoView({ behavior: 'smooth',block: 'start' });
       }
     };
 
@@ -151,12 +151,12 @@ function App() {
       {/* --- 01. EL PROBLEMA --- */}
       <section id="problema" className="max-w-7xl mx-auto px-6 py-24 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div initial={{ opacity: 0, x: -80 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, ease: "easeOut" }} className="space-y-6">
+          <motion.div initial={{ opacity: 0, x: -80 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 1, ease: "easeOut" }} className="space-y-6">
             <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-bold px-4 py-1.5 rounded-full mb-2"><AlertTriangle size={14} /> 01. El Problema</div>
             <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">El desafío de la <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-teal-300">seguridad móvil</span></h2>
             <p className="text-gray-400 text-lg leading-relaxed">Las billeteras móviles deben gestionar secretos criptográficos, mantener información actualizada desde la red y responder a hardware externo sin comprometer la fluidez de la interfaz. Si la derivación de claves bloquea el hilo principal, la app se congela. Si se descuidan las credenciales, el teléfono se vuelve un vector de ataque.</p>
           </motion.div>
-          <motion.div initial={{ opacity: 0, x: 80 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }} className="space-y-4">
+          <motion.div initial={{ opacity: 0, x: 80 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration:1.2, ease: "easeOut", delay: 0.2 }} className="space-y-4">
             <div className="bg-neon-card border border-neon-green/20 p-6 rounded-2xl relative overflow-hidden group hover:border-neon-green/50 transition-colors">
               <div className="absolute top-0 right-0 w-32 h-32 bg-neon-green rounded-full blur-[80px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
               <h3 className="text-xl font-bold text-white mb-2">Pregunta de Investigación</h3>
@@ -196,29 +196,64 @@ function App() {
       {/* --- 03. MARCO TEÓRICO --- */}
       <section id="marco" className="max-w-7xl mx-auto px-6 py-24 relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-bold px-4 py-1.5 rounded-full mb-4"><BookOpen size={14} /> 03. Marco Teórico</div>
+          <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-bold px-4 py-1.5 rounded-full mb-4">
+            <BookOpen size={14} /> 03. Marco Teórico
+          </div>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Fundamentos Aplicados</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">Los pilares de Sistemas Operativos II y criptografía que hacen funcionar a NFC Wallet.</p>
+          <p className="text-gray-400 max-w-2xl mx-auto">Los pilares de Sistemas Operativos II, criptografía y blockchain que hacen funcionar a NFC Wallet.</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
+
+        {/* Cuadrícula de 6 tarjetas (3 columnas x 2 filas) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            {/* Tarjeta 1: Sistemas Operativos */}
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3, duration: 1.2 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
               <div className="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-400 mb-6"><Cpu size={28} /></div>
-              <h3 className="text-xl font-bold text-white mb-3">Sistemas Operativos</h3>
-              <p className="text-sm text-gray-400 mb-4">Gestión del ciclo de vida de Android, hilos de ejecución (Isolates) y comunicación asíncrona.</p>
-              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Aislamiento de memoria en Dart.</li><li>• Colas FIFO y control de concurrencia.</li><li>• Bloqueo de sesión tras 120s.</li></ul>
+              <h3 className="text-xl font-bold text-white mb-3">Ciclo de Vida Android</h3>
+              <p className="text-sm text-gray-400 mb-4">Gestión de estados (creación, pausa, reanudación) y bloqueo de sesión tras 120s en segundo plano.</p>
+              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Aislamiento de memoria.</li><li>• Persistencia de estado.</li></ul>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
-              <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 mb-6"><Database size={28} /></div>
-              <h3 className="text-xl font-bold text-white mb-3">Blockchain EVM</h3>
-              <p className="text-sm text-gray-400 mb-4">Interacción con BNB Smart Chain Testnet mediante RPC, firmas y nonces.</p>
-              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Direcciones determinísticas (BIP-39/44).</li><li>• Estándar de tokens BEP-20.</li><li>• Validación de Chain ID 97.</li></ul>
+            
+            {/* Tarjeta 2: Concurrencia */}
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5, duration: 1.2 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
+              <div className="w-14 h-14 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-400 mb-6"><Layers size={28} /></div>
+              <h3 className="text-xl font-bold text-white mb-3">Hilos e Isolates</h3>
+              <p className="text-sm text-gray-400 mb-4">Uso de hilos ligeros (Isolates) de Dart para tareas intensivas de CPU sin bloquear la UI.</p>
+              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Colas FIFO.</li><li>• Máximo 2 workers concurrentes.</li></ul>
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
+
+            {/* Tarjeta 3: Criptografía */}
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1, duration: 1.2 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
               <div className="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-400 mb-6"><Lock size={28} /></div>
-              <h3 className="text-xl font-bold text-white mb-3">Criptografía Móvil</h3>
-              <p className="text-sm text-gray-400 mb-4">Protección de secretos y autenticación física mediante hardware seguro.</p>
-              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Cifrado AES-256-GCM.</li><li>• Derivación con Argon2id.</li><li>• Autenticación NFC.</li></ul>
+              <h3 className="text-xl font-bold text-white mb-3">Bóveda Criptográfica</h3>
+              <p className="text-sm text-gray-400 mb-4">Cifrado autenticado AES-256-GCM y derivación de claves robusta con Argon2id y Keystore.</p>
+              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Integridad de datos.</li><li>• Protección local.</li></ul>
             </motion.div>
+
+            {/* Tarjeta 4: Blockchain */}
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1.3, duration: 1.2 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
+              <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 mb-6"><Database size={28} /></div>
+              <h3 className="text-xl font-bold text-white mb-3">Red BSC Testnet</h3>
+              <p className="text-sm text-gray-400 mb-4">Interacción con el ecosistema EVM (Chain ID 97) mediante RPC, firmas digitales y nonces.</p>
+              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Tokens BEP-20.</li><li>• Validación de recibos.</li></ul>
+            </motion.div>
+
+            {/* Tarjeta 5: NFC */}
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1.6, duration: 1.2 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
+              <div className="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-6"><Nfc size={28} /></div>
+              <h3 className="text-xl font-bold text-white mb-3">Hardware NFC</h3>
+              <p className="text-sm text-gray-400 mb-4">Comunicación de proximidad (13.56 MHz). Diagnóstico de tarjetas MIFARE y NTAG sin escritura.</p>
+              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Lectura de UID.</li><li>• Vinculación demostrativa.</li></ul>
+            </motion.div>
+
+            {/* Tarjeta 6: Seguridad Móvil */}
+            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1.9, duration: 1.2 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
+              <div className="w-14 h-14 bg-red-500/10 rounded-2xl flex items-center justify-center text-red-400 mb-6"><Shield size={28} /></div>
+              <h3 className="text-xl font-bold text-white mb-3">Autenticación Local</h3>
+              <p className="text-sm text-gray-400 mb-4">Uso de biometría (huella) o credenciales del sistema Android para el acceso cotidiano.</p>
+              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Sin acceso a plantillas.</li><li>• Respuesta segura del SO.</li></ul>
+            </motion.div>
+
         </div>
       </section>
 
@@ -226,7 +261,7 @@ function App() {
       <section id="metodologia" className="border-y border-neon-green/10 py-24 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: "easeOut" }}>
               <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-bold px-4 py-1.5 rounded-full mb-4"><TrendingUp size={14} /> 04. Metodología</div>
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Desarrollo Incremental</h2>
               <p className="text-gray-400 mb-6 leading-relaxed">Se empleó un enfoque de <strong>investigación aplicada y descriptiva</strong>, con un componente experimental para la medición de concurrencia. El desarrollo se ejecutó de manera <strong>incremental e iterativa</strong>.</p>
@@ -245,7 +280,7 @@ function App() {
                 ))}
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-neon-card border border-neon-green/20 p-8 rounded-3xl relative overflow-hidden">
+            <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, ease: "easeOut" }} className="bg-neon-card border border-neon-green/20 p-8 rounded-3xl relative overflow-hidden">
                <div className="absolute top-0 right-0 w-32 h-32 bg-neon-green rounded-full blur-[80px] opacity-10"></div>
                <h3 className="text-2xl font-bold text-white mb-4">Técnicas e Instrumentos</h3>
                <ul className="space-y-3 text-sm text-gray-400">
@@ -547,7 +582,7 @@ function App() {
 // --- COMPONENTES ---
 function FeatureCard({ icon, title, desc, delay }) {
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: delay }} className="bg-neon-card border border-neon-green/10 p-6 rounded-2xl hover:border-neon-green/40 transition-colors group cursor-default">
+    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 1.2, delay: delay }} className="bg-neon-card border border-neon-green/10 p-6 rounded-2xl hover:border-neon-green/40 transition-colors group cursor-default">
       <div className="w-12 h-12 bg-neon-green/10 rounded-xl flex items-center justify-center text-neon-green mb-4 group-hover:scale-110 transition-transform">{icon}</div>
       <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
       <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
