@@ -643,25 +643,55 @@ function PhoneCarousel() {
   const images = [
     { src: "/panel.png", alt: "Panel Principal" },
     { src: "/activos.png", alt: "Mis Activos" },
-    { src: "/movimientos.png", alt: "Movimientos" }
+    { src: "/movimientos.png", alt: "Movimientos" },
+    { src: "/nfc.png", alt: "Verificación NFC" },
+    { src: "/swap.png", alt: "Intercambio" },
+    { src: "/comprobante.png", alt: "Operación Exitosa" }
   ];
+  
   const [currentIndex, setCurrentIndex] = useState(0);
+
   useEffect(() => {
-    const interval = setInterval(() => { setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length); }, 3000);
+    const interval = setInterval(() => { 
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length); 
+    }, 4000); // Cambia cada 4 segundos (más lento y elegante)
+    
     return () => clearInterval(interval);
   }, [images.length]);
 
   return (
     <div className="relative w-[300px] h-[620px] bg-black rounded-[3rem] border-[12px] border-[#1a1a1a] shadow-[0_0_50px_rgba(0,255,136,0.2)] overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#1a1a1a] rounded-b-2xl z-30 flex justify-center items-center gap-2"><div className="w-10 h-1 bg-gray-600 rounded-full"></div><div className="w-2 h-2 bg-gray-700 rounded-full"></div></div>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#1a1a1a] rounded-b-2xl z-30 flex justify-center items-center gap-2">
+        <div className="w-10 h-1 bg-gray-600 rounded-full"></div>
+        <div className="w-2 h-2 bg-gray-700 rounded-full"></div>
+      </div>
+      
       <div className="relative w-full h-full">
         {images.map((img, index) => (
-          <motion.img key={index} src={img.src} alt={img.alt} initial={{ opacity: 0, x: 50 }} animate={{ opacity: currentIndex === index ? 1 : 0, x: currentIndex === index ? 0 : -50, zIndex: currentIndex === index ? 10 : 0 }} transition={{ duration: 1.0, ease: [0.4, 0, 0.2, 1] }} className="absolute inset-0 w-full h-full object-cover" onError={(e) => { e.target.src = `https://via.placeholder.com/300x620/0a1c14/00FF88?text=${img.alt}`; }} />
+          <motion.img 
+            key={index} 
+            src={img.src} 
+            alt={img.alt} 
+            initial={{ opacity: 0, x: 50 }} 
+            animate={{ 
+              opacity: currentIndex === index ? 1 : 0, 
+              x: currentIndex === index ? 0 : -50, 
+              zIndex: currentIndex === index ? 10 : 0 
+            }} 
+            transition={{ duration: 1.0, ease: [0.4, 0, 0.2, 1] }} // Animación más suave
+            className="absolute inset-0 w-full h-full object-cover" 
+            onError={(e) => { e.target.src = `https://via.placeholder.com/300x620/0a1c14/00FF88?text=${img.alt}`; }} 
+          />
         ))}
       </div>
+      
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent z-20 pointer-events-none"></div>
+      
+      {/* Indicadores de posición (ahora son 6 puntitos) */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
-        {images.map((_, idx) => (<div key={idx} className={`h-2 rounded-full transition-all duration-300 ${currentIndex === idx ? "w-6 bg-neon-green" : "w-2 bg-gray-600"}`} />))}
+        {images.map((_, idx) => (
+          <div key={idx} className={`h-2 rounded-full transition-all duration-300 ${currentIndex === idx ? "w-6 bg-neon-green" : "w-2 bg-gray-600"}`} />
+        ))}
       </div>
     </div>
   );
