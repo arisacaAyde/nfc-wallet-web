@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  background-color: #050a08;
+  color: #e2e8f0;
+  font-family: 'Outfit', sans-serif; /* Aplicamos Outfit aquí también */
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; /* Hace que las letras se vean más nítidas */
+  -moz-osx-font-smoothing: grayscale;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+/* Efecto de cursor personalizado (opcional, pero muy premium) */
+::selection {
+  background-color: #00FF88;
+  color: #000;
+}
