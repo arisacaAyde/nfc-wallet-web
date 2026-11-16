@@ -647,7 +647,7 @@ function PhoneCarousel() {
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
-    const interval = setInterval(() => { setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length); }, 2000);
+    const interval = setInterval(() => { setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length); }, 3000);
     return () => clearInterval(interval);
   }, [images.length]);
 
@@ -656,7 +656,7 @@ function PhoneCarousel() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#1a1a1a] rounded-b-2xl z-30 flex justify-center items-center gap-2"><div className="w-10 h-1 bg-gray-600 rounded-full"></div><div className="w-2 h-2 bg-gray-700 rounded-full"></div></div>
       <div className="relative w-full h-full">
         {images.map((img, index) => (
-          <motion.img key={index} src={img.src} alt={img.alt} initial={{ opacity: 0, x: 50 }} animate={{ opacity: currentIndex === index ? 1 : 0, x: currentIndex === index ? 0 : -50, zIndex: currentIndex === index ? 10 : 0 }} transition={{ duration: 0.5, ease: "easeInOut" }} className="absolute inset-0 w-full h-full object-cover" onError={(e) => { e.target.src = `https://via.placeholder.com/300x620/0a1c14/00FF88?text=${img.alt}`; }} />
+          <motion.img key={index} src={img.src} alt={img.alt} initial={{ opacity: 0, x: 50 }} animate={{ opacity: currentIndex === index ? 1 : 0, x: currentIndex === index ? 0 : -50, zIndex: currentIndex === index ? 10 : 0 }} transition={{ duration: 1.0, ease: [0.4, 0, 0.2, 1] }} className="absolute inset-0 w-full h-full object-cover" onError={(e) => { e.target.src = `https://via.placeholder.com/300x620/0a1c14/00FF88?text=${img.alt}`; }} />
         ))}
       </div>
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent z-20 pointer-events-none"></div>
