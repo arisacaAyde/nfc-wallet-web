@@ -193,65 +193,94 @@ function App() {
         </div>
       </section>
 
-      {/* --- 03. MARCO TEÓRICO --- */}
+            {/* --- 03. MARCO TEÓRICO --- */}
       <section id="marco" className="max-w-7xl mx-auto px-6 py-24 relative z-10">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-bold px-4 py-1.5 rounded-full mb-4">
             <BookOpen size={14} /> 03. Marco Teórico
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Fundamentos Aplicados</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">Los pilares de Sistemas Operativos II, criptografía y blockchain que hacen funcionar a NFC Wallet.</p>
+          <p className="text-gray-400 max-w-2xl mx-auto">Los pilares de Sistemas Operativos II, criptografía y blockchain que hacen funcionar a NFC Wallet. Haz clic en cualquier tarjeta para ver el detalle técnico.</p>
         </div>
 
-        {/* Cuadrícula de 6 tarjetas (3 columnas x 2 filas) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             {/* Tarjeta 1: Sistemas Operativos */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3, duration: 1.2 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
-              <div className="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-400 mb-6"><Cpu size={28} /></div>
+            <motion.div 
+              whileHover={{ scale: 1.03 }} 
+              onClick={() => setSelectedImage('/marco-ciclo-android.jpg')} 
+              className="cursor-pointer bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/50 transition-colors group relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500 rounded-full blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
+              <div className="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform"><Cpu size={28} /></div>
               <h3 className="text-xl font-bold text-white mb-3">Ciclo de Vida Android</h3>
               <p className="text-sm text-gray-400 mb-4">Gestión de estados (creación, pausa, reanudación) y bloqueo de sesión tras 120s en segundo plano.</p>
-              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Aislamiento de memoria.</li><li>• Persistencia de estado.</li></ul>
+              <div className="flex items-center gap-2 text-xs text-neon-green font-bold mt-4"><Maximize2 size={14} /> Clic para ampliar</div>
             </motion.div>
             
             {/* Tarjeta 2: Concurrencia */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5, duration: 1.2 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
-              <div className="w-14 h-14 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-400 mb-6"><Layers size={28} /></div>
+            <motion.div 
+              whileHover={{ scale: 1.03 }} 
+              onClick={() => setSelectedImage('/marco-isolates.jpg')} 
+              className="cursor-pointer bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/50 transition-colors group relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-orange-500 rounded-full blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
+              <div className="w-14 h-14 bg-orange-500/10 rounded-2xl flex items-center justify-center text-orange-400 mb-6 group-hover:scale-110 transition-transform"><Layers size={28} /></div>
               <h3 className="text-xl font-bold text-white mb-3">Hilos e Isolates</h3>
               <p className="text-sm text-gray-400 mb-4">Uso de hilos ligeros (Isolates) de Dart para tareas intensivas de CPU sin bloquear la UI.</p>
-              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Colas FIFO.</li><li>• Máximo 2 workers concurrentes.</li></ul>
+              <div className="flex items-center gap-2 text-xs text-neon-green font-bold mt-4"><Maximize2 size={14} /> Clic para ampliar</div>
             </motion.div>
 
             {/* Tarjeta 3: Criptografía */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1, duration: 1.2 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
-              <div className="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-400 mb-6"><Lock size={28} /></div>
+            <motion.div 
+              whileHover={{ scale: 1.03 }} 
+              onClick={() => setSelectedImage('/marco-boveda.jpg')} 
+              className="cursor-pointer bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/50 transition-colors group relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500 rounded-full blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
+              <div className="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform"><Lock size={28} /></div>
               <h3 className="text-xl font-bold text-white mb-3">Bóveda Criptográfica</h3>
               <p className="text-sm text-gray-400 mb-4">Cifrado autenticado AES-256-GCM y derivación de claves robusta con Argon2id y Keystore.</p>
-              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Integridad de datos.</li><li>• Protección local.</li></ul>
+              <div className="flex items-center gap-2 text-xs text-neon-green font-bold mt-4"><Maximize2 size={14} /> Clic para ampliar</div>
             </motion.div>
 
             {/* Tarjeta 4: Blockchain */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1.3, duration: 1.2 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
-              <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 mb-6"><Database size={28} /></div>
+            <motion.div 
+              whileHover={{ scale: 1.03 }} 
+              onClick={() => setSelectedImage('/marco-red-bsc.jpg')} 
+              className="cursor-pointer bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/50 transition-colors group relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500 rounded-full blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
+              <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 mb-6 group-hover:scale-110 transition-transform"><Database size={28} /></div>
               <h3 className="text-xl font-bold text-white mb-3">Red BSC Testnet</h3>
               <p className="text-sm text-gray-400 mb-4">Interacción con el ecosistema EVM (Chain ID 97) mediante RPC, firmas digitales y nonces.</p>
-              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Tokens BEP-20.</li><li>• Validación de recibos.</li></ul>
+              <div className="flex items-center gap-2 text-xs text-neon-green font-bold mt-4"><Maximize2 size={14} /> Clic para ampliar</div>
             </motion.div>
 
             {/* Tarjeta 5: NFC */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1.6, duration: 1.2 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
-              <div className="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-6"><Nfc size={28} /></div>
+            <motion.div 
+              whileHover={{ scale: 1.03 }} 
+              onClick={() => setSelectedImage('/marco-nfc.jpg')} 
+              className="cursor-pointer bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/50 transition-colors group relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500 rounded-full blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
+              <div className="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform"><Nfc size={28} /></div>
               <h3 className="text-xl font-bold text-white mb-3">Hardware NFC</h3>
               <p className="text-sm text-gray-400 mb-4">Comunicación de proximidad (13.56 MHz). Diagnóstico de tarjetas MIFARE y NTAG sin escritura.</p>
-              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Lectura de UID.</li><li>• Vinculación demostrativa.</li></ul>
+              <div className="flex items-center gap-2 text-xs text-neon-green font-bold mt-4"><Maximize2 size={14} /> Clic para ampliar</div>
             </motion.div>
 
             {/* Tarjeta 6: Seguridad Móvil */}
-            <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1.9, duration: 1.2 }} className="bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/30 transition-colors">
-              <div className="w-14 h-14 bg-red-500/10 rounded-2xl flex items-center justify-center text-red-400 mb-6"><Shield size={28} /></div>
+            <motion.div 
+              whileHover={{ scale: 1.03 }} 
+              onClick={() => setSelectedImage('/marco-autenticacion.jpg')} 
+              className="cursor-pointer bg-neon-card border border-white/5 p-8 rounded-3xl hover:border-neon-green/50 transition-colors group relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-red-500 rounded-full blur-[60px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
+              <div className="w-14 h-14 bg-red-500/10 rounded-2xl flex items-center justify-center text-red-400 mb-6 group-hover:scale-110 transition-transform"><Shield size={28} /></div>
               <h3 className="text-xl font-bold text-white mb-3">Autenticación Local</h3>
               <p className="text-sm text-gray-400 mb-4">Uso de biometría (huella) o credenciales del sistema Android para el acceso cotidiano.</p>
-              <ul className="text-xs text-gray-500 space-y-2 border-t border-white/5 pt-4"><li>• Sin acceso a plantillas.</li><li>• Respuesta segura del SO.</li></ul>
+              <div className="flex items-center gap-2 text-xs text-neon-green font-bold mt-4"><Maximize2 size={14} /> Clic para ampliar</div>
             </motion.div>
 
         </div>
@@ -574,6 +603,17 @@ function App() {
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
         </svg>
       </motion.a>
+          {/* MODAL PARA VER IMÁGENES DE ARQUITECTURA */}
+      {selectedImage && (
+        <div className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setSelectedImage(null)}>
+          <div className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center">
+            <button className="absolute -top-12 right-0 text-white hover:text-neon-green transition-colors" onClick={() => setSelectedImage(null)}>
+              <X size={32} />
+            </button>
+            <img src={selectedImage} alt="Diagrama Ampliado" className="w-full h-full object-contain rounded-xl border border-neon-green/30" />
+          </div>
+        </div>
+      )}
 
     </div>
   );
