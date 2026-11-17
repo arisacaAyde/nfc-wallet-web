@@ -147,25 +147,7 @@ function App() {
           <div className="flex-1 hidden lg:block"></div>
         </div>
       </main>
-
-      {/* --- 01. EL PROBLEMA --- */}
-      <section id="problema" className="max-w-7xl mx-auto px-6 py-24 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div initial={{ opacity: 0, x: -80 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 1, ease: "easeOut" }} className="space-y-6">
-            <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-bold px-4 py-1.5 rounded-full mb-2"><AlertTriangle size={14} /> 01. El Problema</div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">El desafío de la <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-teal-300">seguridad móvil</span></h2>
-            <p className="text-gray-400 text-lg leading-relaxed">Las billeteras móviles deben gestionar secretos criptográficos, mantener información actualizada desde la red y responder a hardware externo sin comprometer la fluidez de la interfaz. Si la derivación de claves bloquea el hilo principal, la app se congela. Si se descuidan las credenciales, el teléfono se vuelve un vector de ataque.</p>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, x: 80 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration:1.2, ease: "easeOut", delay: 0.2 }} className="space-y-4">
-            <div className="bg-neon-card border border-neon-green/20 p-6 rounded-2xl relative overflow-hidden group hover:border-neon-green/50 transition-colors">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-neon-green rounded-full blur-[80px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
-              <h3 className="text-xl font-bold text-white mb-2">Pregunta de Investigación</h3>
-              <p className="text-gray-400 text-sm">¿Cómo desarrollar y evaluar una billetera Android que coordine almacenamiento protegido, autenticación local, NFC de diagnóstico y procesamiento concurrente, sin sacrificar la experiencia de usuario?</p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
+     
       {/* --- 02. OBJETIVOS --- */}
       <section id="objetivos" className="border-y border-neon-green/10 py-24 relative z-10">
         <div className="max-w-7xl mx-auto px-6">
@@ -190,6 +172,15 @@ function App() {
               </ul>
             </motion.div>
           </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div initial={{ opacity: 0, x: 80 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration:1.2, ease: "easeOut", delay: 0.2 }} className="space-y-4">
+            <div className="bg-neon-card border border-neon-green/20 p-6 rounded-2xl relative overflow-hidden group hover:border-neon-green/50 transition-colors">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-neon-green rounded-full blur-[80px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
+              <h3 className="text-xl font-bold text-white mb-2">Pregunta de Investigación</h3>
+              <p className="text-gray-400 text-sm">¿Cómo desarrollar y evaluar una billetera Android que coordine almacenamiento protegido, autenticación local, NFC de diagnóstico y procesamiento concurrente, sin sacrificar la experiencia de usuario?</p>
+            </div>
+          </motion.div>
+        </div>
         </div>
       </section>
 
@@ -420,21 +411,7 @@ function App() {
               <div className="p-6 pb-4 bg-black/30 border-b border-white/5"><h3 className="text-xl font-bold text-white">Casos de Uso</h3><p className="text-xs text-gray-400">Interacción con el usuario, Android y BSC Testnet.</p></div>
               <div className="p-4 bg-black/10"><img src="/casos-uso.jpg" alt="Casos de Uso" className="w-full h-auto max-h-[400px] object-contain rounded-lg" onError={(e) => { e.target.src = "https://via.placeholder.com/800x600/0a1c14/00FF88?text=Casos+de+Uso"; }} /></div>
            </motion.div>
-
-           {/* 2. Secuencia de Envío */}
-           <motion.div whileHover={{ scale: 1.03, rotateX: 4, rotateY: -4 }} style={{ perspective: 1000 }} onClick={() => setSelectedImage('/secuencia.jpg')} className="cursor-pointer bg-neon-card border border-neon-green/20 rounded-3xl overflow-hidden shadow-lg group relative">
-              <div className="absolute inset-0 bg-neon-green/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20"><Maximize2 className="text-black" size={40} /></div>
-              <div className="p-6 pb-4 bg-black/30 border-b border-white/5"><h3 className="text-xl font-bold text-white">Secuencia de Envío</h3><p className="text-xs text-gray-400">Verificación, firma local y consulta de recibo.</p></div>
-              <div className="p-4 bg-black/10"><img src="/secuencia.jpg" alt="Secuencia" className="w-full h-auto max-h-[400px] object-contain rounded-lg" onError={(e) => { e.target.src = "https://via.placeholder.com/800x600/0a1c14/00FF88?text=Secuencia+de+Envío"; }} /></div>
-           </motion.div>
-
-           {/* 3. Estados de Transacción */}
-           <motion.div whileHover={{ scale: 1.03, rotateX: 4, rotateY: -4 }} style={{ perspective: 1000 }} onClick={() => setSelectedImage('/estados.jpg')} className="cursor-pointer bg-neon-card border border-neon-green/20 rounded-3xl overflow-hidden shadow-lg group relative">
-              <div className="absolute inset-0 bg-neon-green/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20"><Maximize2 className="text-black" size={40} /></div>
-              <div className="p-6 pb-4 bg-black/30 border-b border-white/5"><h3 className="text-xl font-bold text-white">Estados de Transacción</h3><p className="text-xs text-gray-400">Ciclo de vida de una operación en la red.</p></div>
-              <div className="p-4 bg-black/10"><img src="/estados.jpg" alt="Estados" className="w-full h-auto max-h-[400px] object-contain rounded-lg" onError={(e) => { e.target.src = "https://via.placeholder.com/800x600/0a1c14/00FF88?text=Estados+de+Transacción"; }} /></div>
-           </motion.div>
-
+                   
            {/* 4. Diagrama de Clases */}
            <motion.div whileHover={{ scale: 1.03, rotateX: 4, rotateY: -4 }} style={{ perspective: 1000 }} onClick={() => setSelectedImage('/clases.jpg')} className="cursor-pointer bg-neon-card border border-neon-green/20 rounded-3xl overflow-hidden shadow-lg group relative">
               <div className="absolute inset-0 bg-neon-green/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20"><Maximize2 className="text-black" size={40} /></div>
