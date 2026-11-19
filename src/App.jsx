@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Fingerprint, Nfc, ArrowRightLeft, ChevronDown, BookOpen, Target, Layers, CheckCircle2, Lightbulb, AlertTriangle, TrendingUp, Cpu, Database, Lock, Maximize2, X } from 'lucide-react';
-import SpotlightCard from './components/SpotlightCard';
+import { Shield, Fingerprint, Nfc, ArrowRightLeft, ChevronDown, BookOpen, Target, Layers, CheckCircle2, Lightbulb, AlertTriangle, TrendingUp, Cpu, Database, Lock, Maximize2, X, ChevronLeft, ChevronRight } from 'lucide-react';import SpotlightCard from './components/SpotlightCard';
 import AnimatedNumber from './components/AnimatedNumber';
 
 function App() {
@@ -10,7 +9,7 @@ function App() {
 
   // Definimos el orden de las secciones para las flechas
   const secciones = [
-    'problema', 'objetivos', 'marco', 'metodologia', 
+    'problema', 'marco', 'metodologia', 
     'arquitectura', 'seguridad-so', 'diagramas', 
     'evidencias', 'verificacion', 'conclusiones'
   ];
@@ -85,7 +84,6 @@ function App() {
           <div className="hidden lg:flex gap-1 text-xs font-medium text-gray-300">
             {[
               { name: 'Problema', id: 'problema' },
-              { name: 'Objetivos', id: 'objetivos' },
               { name: 'Marco', id: 'marco' },
               { name: 'Arquitectura', id: 'arquitectura' },
               { name: 'Diagramas', id: 'diagramas' },
@@ -159,37 +157,14 @@ function App() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Columna Izquierda: El Problema */}
+          
+          {/* Columna Izquierda (AHORA SON LOS OBJETIVOS) - Usamos lg:order-1 */}
           <motion.div 
             initial={{ opacity: 0, x: -80 }} 
             whileInView={{ opacity: 1, x: 0 }} 
             viewport={{ once: true, margin: "-100px" }} 
-            transition={{ duration: 1, ease: "easeOut" }} 
-            className="space-y-6"
-          >
-            <div className="bg-neon-card border border-red-500/20 p-8 rounded-3xl relative overflow-hidden h-full">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-red-500 rounded-full blur-[80px] opacity-10"></div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-red-400"><AlertTriangle size={24} /></div>
-                <h3 className="text-2xl font-bold text-white">El Problema</h3>
-              </div>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                Las billeteras móviles deben gestionar secretos criptográficos, mantener información actualizada desde la red y responder a hardware externo sin comprometer la fluidez de la interfaz. Si la derivación de claves bloquea el hilo principal, la app se congela. Si se descuidan las credenciales, el teléfono se vuelve un vector de ataque.
-              </p>
-              <div className="bg-black/30 p-4 rounded-xl border border-white/5">
-                <h4 className="text-white font-bold text-sm mb-2">Pregunta de Investigación:</h4>
-                <p className="text-xs text-gray-400 italic">"¿Cómo desarrollar y evaluar una billetera Android que coordine almacenamiento protegido, autenticación local, NFC de diagnóstico y procesamiento concurrente, sin sacrificar la experiencia de usuario?"</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Columna Derecha: Los Objetivos */}
-          <motion.div 
-            initial={{ opacity: 0, x: 80 }} 
-            whileInView={{ opacity: 1, x: 0 }} 
-            viewport={{ once: true, margin: "-100px" }} 
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }} 
-            className="space-y-6"
+            className="space-y-6 lg:order-1" // <--- ORDEN 1
           >
             {/* Objetivo General */}
             <div className="bg-neon-card border border-neon-green/20 p-6 rounded-3xl relative overflow-hidden">
@@ -216,6 +191,31 @@ function App() {
               </ul>
             </div>
           </motion.div>
+
+          {/* Columna Derecha (AHORA ES EL PROBLEMA) - Usamos lg:order-2 */}
+          <motion.div 
+            initial={{ opacity: 0, x: 80 }} 
+            whileInView={{ opacity: 1, x: 0 }} 
+            viewport={{ once: true, margin: "-100px" }} 
+            transition={{ duration: 1, ease: "easeOut" }} 
+            className="space-y-6 lg:order-2" // <--- ORDEN 2
+          >
+            <div className="bg-neon-card border border-red-500/20 p-8 rounded-3xl relative overflow-hidden h-full">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-red-500 rounded-full blur-[80px] opacity-10"></div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-red-400"><AlertTriangle size={24} /></div>
+                <h3 className="text-2xl font-bold text-white">El Problema</h3>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                Las billeteras móviles deben gestionar secretos criptográficos, mantener información actualizada desde la red y responder a hardware externo sin comprometer la fluidez de la interfaz. Si la derivación de claves bloquea el hilo principal, la app se congela. Si se descuidan las credenciales, el teléfono se vuelve un vector de ataque.
+              </p>
+              <div className="bg-black/30 p-4 rounded-xl border border-white/5">
+                <h4 className="text-white font-bold text-sm mb-2">Pregunta de Investigación:</h4>
+                <p className="text-xs text-gray-400 italic">"¿Cómo desarrollar y evaluar una billetera Android que coordine almacenamiento protegido, autenticación local, NFC de diagnóstico y procesamiento concurrente, sin sacrificar la experiencia de usuario?"</p>
+              </div>
+            </div>
+          </motion.div>
+
         </div>
       </section>
 
@@ -429,38 +429,18 @@ function App() {
         </div>
       </section>
 
-      {/* --- 07. DIAGRAMAS UML --- */}
+       {/* --- 07. DIAGRAMAS UML --- */}
       <section id="diagramas" className="max-w-7xl mx-auto px-6 py-24 relative z-10">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-bold px-4 py-1.5 rounded-full mb-4">
             <Database size={14} /> 07. Modelado Técnico
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Diagramas UML del Sistema</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">El detalle técnico de los flujos, actores y la persistencia de datos. Haz clic en cualquier diagrama para ampliarlo.</p>
+          <p className="text-gray-400 max-w-2xl mx-auto">El detalle técnico de los flujos, actores y la persistencia de datos. Usa las flechas para navegar.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-           {/* 1. Casos de Uso */}
-           <motion.div whileHover={{ scale: 1.03, rotateX: 4, rotateY: -4 }} style={{ perspective: 1000 }} onClick={() => setSelectedImage('/casos-uso.jpg')} className="cursor-pointer bg-neon-card border border-neon-green/20 rounded-3xl overflow-hidden shadow-lg group relative">
-              <div className="absolute inset-0 bg-neon-green/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20"><Maximize2 className="text-black" size={40} /></div>
-              <div className="p-6 pb-4 bg-black/30 border-b border-white/5"><h3 className="text-xl font-bold text-white">Casos de Uso</h3><p className="text-xs text-gray-400">Interacción con el usuario, Android y BSC Testnet.</p></div>
-              <div className="p-4 bg-black/10"><img src="/casos-uso.jpg" alt="Casos de Uso" className="w-full h-auto max-h-[400px] object-contain rounded-lg" onError={(e) => { e.target.src = "https://via.placeholder.com/800x600/0a1c14/00FF88?text=Casos+de+Uso"; }} /></div>
-           </motion.div>
-                   
-           {/* 4. Diagrama de Clases */}
-           <motion.div whileHover={{ scale: 1.03, rotateX: 4, rotateY: -4 }} style={{ perspective: 1000 }} onClick={() => setSelectedImage('/clases.jpg')} className="cursor-pointer bg-neon-card border border-neon-green/20 rounded-3xl overflow-hidden shadow-lg group relative">
-              <div className="absolute inset-0 bg-neon-green/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20"><Maximize2 className="text-black" size={40} /></div>
-              <div className="p-6 pb-4 bg-black/30 border-b border-white/5"><h3 className="text-xl font-bold text-white">Diagrama de Clases</h3><p className="text-xs text-gray-400">Controladores, servicios y adaptadores.</p></div>
-              <div className="p-4 bg-black/10"><img src="/clases.jpg" alt="Clases" className="w-full h-auto max-h-[400px] object-contain rounded-lg" onError={(e) => { e.target.src = "https://via.placeholder.com/800x600/0a1c14/00FF88?text=Diagrama+de+Clases"; }} /></div>
-           </motion.div>
-
-           {/* 5. Modelo de Datos */}
-           <motion.div whileHover={{ scale: 1.03, rotateX: 4, rotateY: -4 }} style={{ perspective: 1000 }} onClick={() => setSelectedImage('/datos.jpg')} className="cursor-pointer bg-neon-card border border-neon-green/20 rounded-3xl overflow-hidden shadow-lg group relative">
-              <div className="absolute inset-0 bg-neon-green/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20"><Maximize2 className="text-black" size={40} /></div>
-              <div className="p-6 pb-4 bg-black/30 border-b border-white/5"><h3 className="text-xl font-bold text-white">Modelo de Datos</h3><p className="text-xs text-gray-400">Esquema físico de las bases SQLite.</p></div>
-              <div className="p-4 bg-black/10"><img src="/datos.jpg" alt="Modelo de Datos" className="w-full h-auto max-h-[400px] object-contain rounded-lg" onError={(e) => { e.target.src = "https://via.placeholder.com/800x600/0a1c14/00FF88?text=Modelo+de+Datos"; }} /></div>
-           </motion.div>
-        </div>
+        {/* LLAMADA AL COMPONENTE DEL CARRUSEL UML */}
+        <UmlCarousel onImageClick={setSelectedImage} />
       </section>
 
       {/* --- 08. EVIDENCIAS (INTERFAZ) --- */}
@@ -572,10 +552,10 @@ function App() {
             <div>
               <h4 className="text-white font-bold mb-4">Ruta de Exposición</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="#problema" className="hover:text-neon-green transition">01. El Problema</a></li>
-                <li><a href="#objetivos" className="hover:text-neon-green transition">02. Objetivos</a></li>
-                <li><a href="#marco" className="hover:text-neon-green transition">03. Marco Teórico</a></li>
-                <li><a href="#arquitectura" className="hover:text-neon-green transition">05. Arquitectura</a></li>
+                <li><a href="#problema" className="hover:text-neon-green transition">01. Planteamiento</a></li>
+                <li><a href="#marco" className="hover:text-neon-green transition">02. Marco Teórico</a></li>
+                <li><a href="#arquitectura" className="hover:text-neon-green transition">03. Arquitectura</a></li>
+                <li><a href="#conclusiones" className="hover:text-neon-green transition">04. Conclusiones</a></li>
               </ul>
             </div>
             <div>
@@ -722,6 +702,120 @@ function PhoneCarousel() {
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
         {images.map((_, idx) => (
           <div key={idx} className={`h-2 rounded-full transition-all duration-300 ${currentIndex === idx ? "w-6 bg-neon-green" : "w-2 bg-gray-600"}`} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// --- COMPONENTE DEL CARRUSEL DE DIAGRAMAS UML ---
+function UmlCarousel({ onImageClick }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const diagrams = [
+    { 
+      src: '/casos-uso.jpg', 
+      title: 'Casos de Uso', 
+      desc: 'Interacción del Usuario, Sistema Android y BSC Testnet con los procesos de la app.',
+      tag: 'Actores y Procesos'
+    },
+    { 
+      src: '/secuencia.jpg', 
+      title: 'Secuencia de Envío', 
+      desc: 'Flujo completo: validación, firma local, difusión y consulta de recibo.',
+      tag: 'Flujo de Operaciones'
+    },
+    { 
+      src: '/estados.jpg', 
+      title: 'Estados de Transacción', 
+      desc: 'Ciclo de vida de una operación desde borrador hasta confirmada o fallida.',
+      tag: 'Ciclo de Vida'
+    },
+    { 
+      src: '/clases.jpg', 
+      title: 'Diagrama de Clases', 
+      desc: 'Estructura de controladores, servicios y adaptadores de la arquitectura.',
+      tag: 'Arquitectura de Software'
+    },
+    { 
+      src: '/datos.jpg', 
+      title: 'Modelo de Datos', 
+      desc: 'Esquema de las bases SQLite locales para perfiles e historial.',
+      tag: 'Persistencia Local'
+    }
+  ];
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % diagrams.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + diagrams.length) % diagrams.length);
+  };
+
+  return (
+    <div className="relative max-w-5xl mx-auto">
+      
+      {/* Botones de Navegación (Fuera del contenedor para no tapar la imagen) */}
+      <button 
+        onClick={prevSlide} 
+        className="absolute left-0 md:-left-16 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-neon-green text-white hover:text-black p-3 rounded-full border border-white/10 backdrop-blur-md transition-all duration-300"
+      >
+        <ChevronLeft size={28} />
+      </button>
+      <button 
+        onClick={nextSlide} 
+        className="absolute right-0 md:-right-16 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-neon-green text-white hover:text-black p-3 rounded-full border border-white/10 backdrop-blur-md transition-all duration-300"
+      >
+        <ChevronRight size={28} />
+      </button>
+
+      {/* Tarjeta del Diagrama Actual */}
+      <div className="bg-neon-card border border-neon-green/20 rounded-3xl overflow-hidden shadow-2xl relative">
+        
+        {/* Texto descriptivo arriba */}
+        <div className="p-6 md:p-8 bg-black/40 border-b border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <span className="text-xs font-bold text-neon-green uppercase tracking-wider mb-2 block">{diagrams[currentIndex].tag}</span>
+            <h3 className="text-2xl font-bold text-white">{diagrams[currentIndex].title}</h3>
+            <p className="text-sm text-gray-400 mt-1 max-w-2xl">{diagrams[currentIndex].desc}</p>
+          </div>
+          <div className="flex-shrink-0">
+            <span className="bg-neon-green/10 text-neon-green px-4 py-2 rounded-full text-sm font-bold border border-neon-green/20">
+              {currentIndex + 1} / {diagrams.length}
+            </span>
+          </div>
+        </div>
+
+        {/* Imagen clickeable */}
+        <motion.div 
+          key={currentIndex}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="p-4 md:p-8 bg-black/20 flex justify-center cursor-pointer group relative"
+          onClick={() => onImageClick(diagrams[currentIndex].src)}
+        >
+          <div className="absolute inset-0 bg-neon-green/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
+            <Maximize2 className="text-black" size={48} />
+          </div>
+          <img 
+            src={diagrams[currentIndex].src} 
+            alt={diagrams[currentIndex].title} 
+            className="max-h-[500px] w-auto object-contain rounded-lg shadow-lg"
+            onError={(e) => { e.target.src = "https://via.placeholder.com/800x600/0a1c14/00FF88?text=Diagrama"; }} 
+          />
+        </motion.div>
+      </div>
+
+      {/* Puntitos indicadores */}
+      <div className="flex justify-center gap-2 mt-6">
+        {diagrams.map((_, idx) => (
+          <button 
+            key={idx} 
+            onClick={() => setCurrentIndex(idx)} 
+            className={`h-2 rounded-full transition-all duration-300 ${currentIndex === idx ? "w-8 bg-neon-green" : "w-2 bg-gray-600 hover:bg-gray-400"}`} 
+          />
         ))}
       </div>
     </div>
