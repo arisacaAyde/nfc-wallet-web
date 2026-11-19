@@ -14,27 +14,36 @@ function App() {
     'evidencias', 'verificacion', 'conclusiones'
   ];
 
-  // --- LÓGICA DE LAS FLECHAS DEL TECLADO ---
+    // --- LÓGICA DE LAS FLECHAS DEL TECLADO ---
   useEffect(() => {
     const handleKeyDown = (e) => {
-      // Si el modal está abierto, solo permitimos cerrar con ESC
+      // 1. Si el modal está abierto, solo permitimos cerrar con ESC
       if (selectedImage) {
         if (e.key === 'Escape') setSelectedImage(null);
         return; 
       }
 
-      // Si el usuario está escribiendo en un input, no hacemos nada
+      // 2. Si el usuario está escribiendo en un input, no hacemos nada
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+      // 3. SI ES UNA FLECHA, FRENAMOS EL SCROLL NATIVO DEL NAVEGADOR (Esto soluciona el salto)
+      if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+        e.preventDefault();
+      }
 
       let currentIndex = -1;
       let minDistance = Infinity;
 
-      // Buscamos en qué sección estamos basándonos en la posición del scroll
+      // 4. Buscamos en qué sección estamos
       secciones.forEach((id, index) => {
         const element = document.getElementById(id);
         if (element) {
           const rect = element.getBoundingClientRect();
-          const distance = Math.abs(rect.top);
+          // Usamos el centro de la pantalla para calcular la distancia real
+          const elementCenter = rect.top + rect.height / 2;
+          const screenCenter = window.innerHeight / 2;
+          const distance = Math.abs(elementCenter - screenCenter);
+          
           if (distance < minDistance) {
             minDistance = distance;
             currentIndex = index;
@@ -42,15 +51,13 @@ function App() {
         }
       });
 
-      // Lógica para bajar (Flecha Abajo o Derecha)
+      // 5. Lógica para mover a la siguiente sección
       if ((e.key === 'ArrowDown' || e.key === 'ArrowRight') && currentIndex < secciones.length - 1) {
-        e.preventDefault();
-        document.getElementById(secciones[currentIndex + 1])?.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Cambiado a 'center'
+        document.getElementById(secciones[currentIndex + 1])?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } 
-      // Lógica para subir (Flecha Arriba o Izquierda)
+      // 6. Lógica para mover a la sección anterior
       else if ((e.key === 'ArrowUp' || e.key === 'ArrowLeft') && currentIndex > 0) {
-        e.preventDefault();
-        document.getElementById(secciones[currentIndex - 1])?.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Cambiado a 'center'
+        document.getElementById(secciones[currentIndex - 1])?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     };
 
@@ -134,12 +141,14 @@ function App() {
               </a>
               
               {/* Botón 2: Conoce más (Scroll a Fase 1) */}
-              <a 
-                href="#problema" 
+              <button 
+                onClick={() => {
+                  document.getElementById('problema')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }}
                 className="flex items-center justify-center gap-2 border border-white/20 bg-black/40 backdrop-blur-md hover:bg-white/10 text-white font-medium py-4 px-8 rounded-full transition-all duration-300 text-lg"
               >
                 Conoce más
-              </a>
+              </button>
             </div>
           </motion.div>
           <div className="flex-1 hidden lg:block"></div>
@@ -712,6 +721,7 @@ function PhoneCarousel() {
 function UmlCarousel({ onImageClick }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Solo los 3 diagramas solicitados
   const diagrams = [
     { 
       src: '/casos-uso.jpg', 
@@ -744,7 +754,7 @@ function UmlCarousel({ onImageClick }) {
   return (
     <div className="relative max-w-5xl mx-auto">
       
-      {/* Botones de Navegación (Fuera del contenedor para no tapar la imagen) */}
+      {/* Botones de Navegación */}
       <button 
         onClick={prevSlide} 
         className="absolute left-0 md:-left-16 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-neon-green text-white hover:text-black p-3 rounded-full border border-white/10 backdrop-blur-md transition-all duration-300"
@@ -796,7 +806,7 @@ function UmlCarousel({ onImageClick }) {
         </motion.div>
       </div>
 
-      {/* Puntitos indicadores */}
+      {/* Puntitos indicadores (Ahora solo serán 3) */}
       <div className="flex justify-center gap-2 mt-6">
         {diagrams.map((_, idx) => (
           <button 
