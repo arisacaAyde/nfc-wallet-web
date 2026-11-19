@@ -45,12 +45,12 @@ function App() {
       // Lógica para bajar (Flecha Abajo o Derecha)
       if ((e.key === 'ArrowDown' || e.key === 'ArrowRight') && currentIndex < secciones.length - 1) {
         e.preventDefault();
-        document.getElementById(secciones[currentIndex + 1])?.scrollIntoView({ behavior: 'smooth',block: 'start' });
+        document.getElementById(secciones[currentIndex + 1])?.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Cambiado a 'center'
       } 
       // Lógica para subir (Flecha Arriba o Izquierda)
       else if ((e.key === 'ArrowUp' || e.key === 'ArrowLeft') && currentIndex > 0) {
         e.preventDefault();
-        document.getElementById(secciones[currentIndex - 1])?.scrollIntoView({ behavior: 'smooth',block: 'start' });
+        document.getElementById(secciones[currentIndex - 1])?.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Cambiado a 'center'
       }
     };
 
@@ -162,7 +162,7 @@ function App() {
           <motion.div 
             initial={{ opacity: 0, x: -80 }} 
             whileInView={{ opacity: 1, x: 0 }} 
-            viewport={{ once: true, margin: "-100px" }} 
+            viewport={{ once: true, margin: "-50px" }} 
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }} 
             className="space-y-6 lg:order-1" // <--- ORDEN 1
           >
@@ -196,7 +196,7 @@ function App() {
           <motion.div 
             initial={{ opacity: 0, x: 80 }} 
             whileInView={{ opacity: 1, x: 0 }} 
-            viewport={{ once: true, margin: "-100px" }} 
+            viewport={{ once: true, margin: "-50px" }} 
             transition={{ duration: 1, ease: "easeOut" }} 
             className="space-y-6 lg:order-2" // <--- ORDEN 2
           >
@@ -718,18 +718,6 @@ function UmlCarousel({ onImageClick }) {
       title: 'Casos de Uso', 
       desc: 'Interacción del Usuario, Sistema Android y BSC Testnet con los procesos de la app.',
       tag: 'Actores y Procesos'
-    },
-    { 
-      src: '/secuencia.jpg', 
-      title: 'Secuencia de Envío', 
-      desc: 'Flujo completo: validación, firma local, difusión y consulta de recibo.',
-      tag: 'Flujo de Operaciones'
-    },
-    { 
-      src: '/estados.jpg', 
-      title: 'Estados de Transacción', 
-      desc: 'Ciclo de vida de una operación desde borrador hasta confirmada o fallida.',
-      tag: 'Ciclo de Vida'
     },
     { 
       src: '/clases.jpg', 
