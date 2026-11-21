@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 html {
+  font-size: 18px; /* Esto agranda TODA la página un 12.5% */
+}
+
+html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
 }

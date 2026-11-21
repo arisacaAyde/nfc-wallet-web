@@ -53,11 +53,11 @@ function App() {
 
       // 5. Lógica para mover a la siguiente sección
       if ((e.key === 'ArrowDown' || e.key === 'ArrowRight') && currentIndex < secciones.length - 1) {
-        document.getElementById(secciones[currentIndex + 1])?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.getElementById(secciones[currentIndex + 1])?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } 
       // 6. Lógica para mover a la sección anterior
       else if ((e.key === 'ArrowUp' || e.key === 'ArrowLeft') && currentIndex > 0) {
-        document.getElementById(secciones[currentIndex - 1])?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.getElementById(secciones[currentIndex - 1])?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     };
 
@@ -143,7 +143,7 @@ function App() {
               {/* Botón 2: Conoce más (Scroll a Fase 1) */}
               <button 
                 onClick={() => {
-                  document.getElementById('problema')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  document.getElementById('problema')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }}
                 className="flex items-center justify-center gap-2 border border-white/20 bg-black/40 backdrop-blur-md hover:bg-white/10 text-white font-medium py-4 px-8 rounded-full transition-all duration-300 text-lg"
               >
@@ -156,7 +156,7 @@ function App() {
       </main>
      
             {/* --- 01. PROBLEMA Y OBJETIVOS --- */}
-      <section id="problema" className="max-w-7xl mx-auto px-6 py-24 relative z-10">
+      <section id="problema" className="max-w-7xl mx-auto px-6 py-24 relative z-10 scroll-mt-24">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-bold px-4 py-1.5 rounded-full mb-4">
             <Target size={14} /> 01. Planteamiento
@@ -165,49 +165,49 @@ function App() {
           <p className="text-gray-400 max-w-2xl mx-auto">Desde la seguridad móvil hasta la implementación de una billetera descentralizada.</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           
-          {/* Columna Izquierda (AHORA SON LOS OBJETIVOS) - Usamos lg:order-1 */}
+          {/* Columna Izquierda (LOS OBJETIVOS) */}
           <motion.div 
             initial={{ opacity: 0, x: -80 }} 
             whileInView={{ opacity: 1, x: 0 }} 
             viewport={{ once: true, margin: "-50px" }} 
             transition={{ duration: 1, ease: "easeOut", delay: 0.2 }} 
-            className="space-y-6 lg:order-1" // <--- ORDEN 1
+            className="space-y-6 lg:order-1"
           >
             {/* Objetivo General */}
-            <div className="bg-neon-card border border-neon-green/20 p-6 rounded-3xl relative overflow-hidden">
+            <div className="bg-neon-card border border-neon-green/20 p-8 rounded-3xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-neon-green rounded-full blur-[80px] opacity-10"></div>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-neon-green/10 rounded-lg flex items-center justify-center text-neon-green"><Target size={20} /></div>
-                <h3 className="text-xl font-bold text-white">Objetivo General</h3>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 bg-neon-green/10 rounded-lg flex items-center justify-center text-neon-green"><Target size={24} /></div>
+                <h3 className="text-2xl font-bold text-white">Objetivo General</h3>
               </div>
-              <p className="text-gray-400 text-sm">Diseñar e implementar una billetera móvil modular por capas para BSC Testnet que coordine almacenamiento protegido, autenticación local, NFC diagnóstico y procesamiento concurrente.</p>
+              <p className="text-gray-300 text-base md:text-lg leading-relaxed">Diseñar e implementar una billetera móvil modular por capas para BSC Testnet que coordine almacenamiento protegido, autenticación local, NFC diagnóstico y procesamiento concurrente.</p>
             </div>
 
             {/* Objetivos Específicos */}
-            <div className="bg-neon-card border border-neon-green/20 p-6 rounded-3xl relative overflow-hidden h-full">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-neon-green/10 rounded-lg flex items-center justify-center text-neon-green"><Layers size={20} /></div>
-                <h3 className="text-xl font-bold text-white">Objetivos Específicos</h3>
+            <div className="bg-neon-card border border-neon-green/20 p-8 rounded-3xl relative overflow-hidden">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-neon-green/10 rounded-lg flex items-center justify-center text-neon-green"><Layers size={24} /></div>
+                <h3 className="text-2xl font-bold text-white">Objetivos Específicos</h3>
               </div>
-              <ul className="text-gray-400 text-sm space-y-3">
-                <li className="flex items-start gap-2"><span className="text-neon-green mt-0.5">✓</span> Gestión de identidad determinística (BIP-39/44).</li>
-                <li className="flex items-start gap-2"><span className="text-neon-green mt-0.5">✓</span> Bóveda cifrada local con AES-256-GCM y Argon2id.</li>
-                <li className="flex items-start gap-2"><span className="text-neon-green mt-0.5">✓</span> Envíos en Testnet con validación de recibo.</li>
-                <li className="flex items-start gap-2"><span className="text-neon-green mt-0.5">✓</span> Estudio de concurrencia con Isolates (máx. 2 workers).</li>
-                <li className="flex items-start gap-2"><span className="text-neon-green mt-0.5">✓</span> Política de red estricta para WalletConnect (eip155:97).</li>
+              <ul className="text-gray-300 text-base md:text-lg space-y-4">
+                <li className="flex items-start gap-3"><span className="text-neon-green font-bold mt-1 text-xl">✓</span> Gestión de identidad determinística (BIP-39/44).</li>
+                <li className="flex items-start gap-3"><span className="text-neon-green font-bold mt-1 text-xl">✓</span> Bóveda cifrada local con AES-256-GCM y Argon2id.</li>
+                <li className="flex items-start gap-3"><span className="text-neon-green font-bold mt-1 text-xl">✓</span> Envíos en Testnet con validación de recibo.</li>
+                <li className="flex items-start gap-3"><span className="text-neon-green font-bold mt-1 text-xl">✓</span> Estudio de concurrencia con Isolates (máx. 2 workers).</li>
+                <li className="flex items-start gap-3"><span className="text-neon-green font-bold mt-1 text-xl">✓</span> Política de red estricta para WalletConnect (eip155:97).</li>
               </ul>
             </div>
           </motion.div>
 
-          {/* Columna Derecha (AHORA ES EL PROBLEMA) - Usamos lg:order-2 */}
+          {/* Columna Derecha (EL PROBLEMA) */}
           <motion.div 
             initial={{ opacity: 0, x: 80 }} 
             whileInView={{ opacity: 1, x: 0 }} 
             viewport={{ once: true, margin: "-50px" }} 
             transition={{ duration: 1, ease: "easeOut" }} 
-            className="space-y-6 lg:order-2" // <--- ORDEN 2
+            className="space-y-6 lg:order-2"
           >
             <div className="bg-neon-card border border-red-500/20 p-8 rounded-3xl relative overflow-hidden h-full">
               <div className="absolute top-0 right-0 w-32 h-32 bg-red-500 rounded-full blur-[80px] opacity-10"></div>
@@ -215,12 +215,12 @@ function App() {
                 <div className="w-12 h-12 bg-red-500/10 rounded-xl flex items-center justify-center text-red-400"><AlertTriangle size={24} /></div>
                 <h3 className="text-2xl font-bold text-white">El Problema</h3>
               </div>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">
+              <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
                 Las billeteras móviles deben gestionar secretos criptográficos, mantener información actualizada desde la red y responder a hardware externo sin comprometer la fluidez de la interfaz. Si la derivación de claves bloquea el hilo principal, la app se congela. Si se descuidan las credenciales, el teléfono se vuelve un vector de ataque.
               </p>
-              <div className="bg-black/30 p-4 rounded-xl border border-white/5">
-                <h4 className="text-white font-bold text-sm mb-2">Pregunta de Investigación:</h4>
-                <p className="text-xs text-gray-400 italic">"¿Cómo desarrollar y evaluar una billetera Android que coordine almacenamiento protegido, autenticación local, NFC de diagnóstico y procesamiento concurrente, sin sacrificar la experiencia de usuario?"</p>
+              <div className="bg-black/30 p-5 rounded-xl border border-white/5 mt-4">
+                <h4 className="text-white font-bold text-base mb-2">Pregunta de Investigación:</h4>
+                <p className="text-sm md:text-base text-gray-400 italic">"¿Cómo desarrollar y evaluar una billetera Android que coordine almacenamiento protegido, autenticación local, NFC de diagnóstico y procesamiento concurrente, sin sacrificar la experiencia de usuario?"</p>
               </div>
             </div>
           </motion.div>
@@ -329,7 +329,7 @@ function App() {
               <div className="inline-flex items-center gap-2 bg-neon-green/10 border border-neon-green/30 text-neon-green text-xs font-bold px-4 py-1.5 rounded-full mb-4"><TrendingUp size={14} /> 04. Metodología</div>
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Desarrollo Incremental</h2>
               <p className="text-gray-400 mb-6 leading-relaxed">Se empleó un enfoque de <strong>investigación aplicada y descriptiva</strong>, con un componente experimental para la medición de concurrencia. El desarrollo se ejecutó de manera <strong>incremental e iterativa</strong>.</p>
-              <div className="space-y-4">
+                            <div className="space-y-6"> {/* Aumentamos el espacio entre fases */}
                 {[
                   { fase: 'Fase 1', name: 'Interfaz y Navegación', desc: 'Prototipo Green Neon y Provider.' },
                   { fase: 'Fase 2', name: 'Identidad y Seguridad', desc: 'Bóveda local, biometría y SQLite.' },
@@ -337,9 +337,24 @@ function App() {
                   { fase: 'Fase 4', name: 'Laboratorio SO II', desc: 'Isolates, colas FIFO y métricas.' },
                   { fase: 'Fase 5', name: 'Integración Final', desc: 'NFC diagnóstico y WalletConnect.' },
                 ].map((item, i) => (
-                  <div key={i} className="flex gap-4 items-start">
-                    <div className="w-16 pt-1 text-xs font-bold text-neon-green">{item.fase}</div>
-                    <div className="flex-1 border-l-2 border-neon-green/30 pl-4 pb-4 relative"><div className="absolute w-3 h-3 bg-neon-green rounded-full -left-[7px] top-1.5"></div><h4 className="text-white font-bold text-sm">{item.name}</h4><p className="text-xs text-gray-500">{item.desc}</p></div>
+                  <div key={i} className="flex gap-6 items-start">
+                    
+                    {/* Etiqueta de la Fase (Más grande) */}
+                    <div className="w-20 pt-1 text-lg font-bold text-neon-green">{item.fase}</div>
+                    
+                    {/* Contenido de la fase */}
+                    <div className="flex-1 border-l-2 border-neon-green/30 pl-6 pb-6 relative">
+                      
+                      {/* Punto verde (Más grande) */}
+                      <div className="absolute w-4 h-4 bg-neon-green rounded-full -left-[9px] top-1.5 shadow-[0_0_10px_rgba(0,255,136,0.8)]"></div>
+                      
+                      {/* Título (Más grande y blanco) */}
+                      <h4 className="text-white font-bold text-xl mb-1">{item.name}</h4>
+                      
+                      {/* Descripción (Más grande y gris claro) */}
+                      <p className="text-base text-gray-400">{item.desc}</p>
+                    </div>
+                    
                   </div>
                 ))}
               </div>
