@@ -3,27 +3,28 @@
 @tailwind utilities;
 
 html {
-  font-size: 15px; /* Esto agranda TODA la página un 12.5% */
-}
-
-html {
+  /* Unificamos los dos bloques html aquí */
+  font-size: 18px !important; /* Tamaño ideal para la feria (18px) */
   scroll-behavior: smooth;
-  scroll-padding-top: 100px;
+  scroll-padding-top: 100px; /* Para que el navbar no tape los títulos */
 }
 
 body {
   background-color: #050a08;
   color: #e2e8f0;
-  font-family: 'Outfit', sans-serif; /* Aplicamos Outfit aquí también */
+  font-family: 'Outfit', sans-serif;
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased; /* Hace que las letras se vean más nítidas */
+  -webkit-font-smoothing: antialiased; /* Texto más nítido */
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Animación de la marquesina infinita */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-/* Efecto de cursor personalizado (opcional, pero muy premium) */
+
+/* Efecto de selección de texto */
 ::selection {
   background-color: #00FF88;
   color: #000;
