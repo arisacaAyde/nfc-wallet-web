@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  font-size: 18px; /* Esto agranda TODA la página un 12.5% */
+  font-size: 15px; /* Esto agranda TODA la página un 12.5% */
 }
 
 html {
