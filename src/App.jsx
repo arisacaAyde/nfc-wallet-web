@@ -321,7 +321,7 @@ function App() {
         </div>
 
         <div className="max-w-5xl mx-auto">
-          <motion.div whileHover={{ scale: 1.02, rotateX: 2, rotateY: -2 }} onClick={() => setSelectedImage('/arquitectura.jpg')} className="cursor-pointer bg-neon-card border border-neon-green/20 rounded-3xl overflow-hidden shadow-2xl group relative" style={{ perspective: 1000 }}>
+          <motion.div whileHover={{ scale: 1.02, rotateX: 2, rotateY: -2 }} onClick={() => setSelectedImage('/arquitectura.png')} className="cursor-pointer bg-neon-card border border-neon-green/20 rounded-3xl overflow-hidden shadow-2xl group relative" style={{ perspective: 1000 }}>
             <div className="absolute inset-0 bg-neon-green/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
               <Maximize2 className="text-black" size={64} />
             </div>
