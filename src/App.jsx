@@ -243,7 +243,7 @@ function App() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-red-500 rounded-full blur-[80px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
               <div className="w-16 h-16 bg-red-500/10 rounded-2xl flex items-center justify-center text-red-400 mb-6 group-hover:scale-110 transition-transform"><Shield size={32} /></div>
               <h3 className="text-2xl font-bold text-white mb-4">Autenticación Local</h3>
-              <p className="text-lg text-gray-300 mb-6">Uso de biometría (huella) o credenciales del sistema Android para el acceso cotidiano.</p>
+              <p className="text-lg text-gray-300 mb-6">Uso de biometría (huella) o credenciales del sistema para el acceso cotidiano.</p>
               <div className="flex items-center gap-2 text-base text-neon-green font-bold mt-4"><Maximize2 size={18} /> Clic para ampliar</div>
             </motion.div>
 
@@ -330,7 +330,7 @@ function App() {
               <p className="text-lg text-gray-300 mt-2">Flutter, Provider, Dominio, Adaptadores y Servicios Externos.</p>
             </div>
             <div className="p-6 bg-black/10 flex justify-center">
-              <img src="/arquitectura.jpg" alt="Arquitectura" className="w-full max-h-[600px] object-contain rounded-xl" onError={(e) => { e.target.src = "https://via.placeholder.com/800x600/0a1c14/00FF88?text=Arquitectura"; }} />
+              <img src="/arquitectura.png" alt="Arquitectura" className="w-full max-h-[600px] object-contain rounded-xl" onError={(e) => { e.target.src = "/arquitectura2.jpg"; }} />
             </div>
           </motion.div>
         </div>
@@ -431,7 +431,7 @@ function App() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-neon-green rounded-full blur-[80px] opacity-10"></div>
               <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3"><CheckCircle2 className="text-neon-green" size={32} /> Conclusiones</h3>
               <ul className="space-y-5 text-lg md:text-xl text-gray-200">
-                <li className="flex gap-3"><span className="text-neon-green font-bold">1.</span> El prototipo demuestra que es técnicamente viable integrar seguridad, blockchain y concurrencia en Android.</li>
+                <li className="flex gap-3"><span className="text-neon-green font-bold">1.</span> El prototipo demuestra que es técnicamente viable integrar seguridad, blockchain y concurrencia.</li>
                 <li className="flex gap-3"><span className="text-neon-green font-bold">2.</span> La bóveda AES-256-GCM protege la semilla, pero la autorización fuerte por NFC requiere hardware AES específico.</li>
                 <li className="flex gap-3"><span className="text-neon-green font-bold">3.</span> Los Isolates mejoran la respuesta de la interfaz, aunque añaden latencia por coordinación.</li>
               </ul>
@@ -482,7 +482,7 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center gap-3 mb-4"><img src="/logo.png" alt="NFC Wallet" className="w-10 h-10 object-contain" onError={(e) => e.target.style.display = 'none'} /><span className="text-3xl font-bold text-white tracking-tight">NFC <span className="text-neon-green">Wallet</span></span></div>
-              <p className="text-gray-300 text-lg max-w-md mb-6">La billetera descentralizada para Android con autenticación biométrica, autorización NFC y procesamiento concurrente.</p>
+              <p className="text-gray-300 text-lg max-w-md mb-6">La billetera descentralizada con autenticación biométrica, autorización NFC y procesamiento concurrente.</p>
             </div>
             <div>
               <h4 className="text-white font-bold text-xl mb-4">Ruta de Exposición</h4>
