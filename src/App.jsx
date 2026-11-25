@@ -197,7 +197,7 @@ function App() {
             <motion.div whileHover={{ scale: 1.03 }} onClick={() => setSelectedImage('/marco-ciclo-android.png')} className="cursor-pointer bg-neon-card border border-white/10 p-8 rounded-3xl hover:border-purple-500/50 transition-colors group relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500 rounded-full blur-[80px] opacity-10 group-hover:opacity-30 transition-opacity"></div>
               <div className="w-16 h-16 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-400 mb-6 group-hover:scale-110 transition-transform"><Cpu size={32} /></div>
-              <h3 className="text-2xl font-bold text-white mb-4">Ciclo de Vida Android</h3>
+              <h3 className="text-2xl font-bold text-white mb-4">Ciclo de Vida </h3>
               <p className="text-lg text-gray-300 mb-6">Gestión de estados (creación, pausa, reanudación) y bloqueo de sesión tras 120s en segundo plano.</p>
               <div className="flex items-center gap-2 text-base text-neon-green font-bold mt-4"><Maximize2 size={18} /> Clic para ampliar</div>
             </motion.div>
@@ -439,10 +439,19 @@ function App() {
 
             <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-neon-card border border-neon-green/20 p-10 rounded-3xl">
               <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3"><Lightbulb className="text-yellow-400" size={32} /> Recomendaciones</h3>
-              <ul className="space-y-5 text-lg md:text-xl text-gray-200">
-                <li className="flex gap-3"><span className="text-yellow-400 font-bold">→</span> <strong>No usar con activos reales</strong> sin auditoría externa y pruebas de penetración.</li>
-                <li className="flex gap-3"><span className="text-yellow-400 font-bold">→</span> Adquirir tarjetas DESFire EV3 o NTAG 424 DNA para validar criptografía AES.</li>
-                <li className="flex gap-3"><span className="text-yellow-400 font-bold">→</span> Repetir los ensayos de concurrencia en modo <em>profile</em> con múltiples iteraciones.</li>
+                            <ul className="space-y-5 text-lg md:text-xl text-gray-200">
+                <li className="flex items-start gap-3">
+                  <span className="text-yellow-400 font-bold mt-1">→</span> 
+                  <span><strong>No usar con activos reales</strong> sin auditoría externa y pruebas de penetración.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-yellow-400 font-bold mt-1">→</span> 
+                  <span>Adquirir tarjetas DESFire EV3 o NTAG 424 DNA para validar criptografía AES.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-yellow-400 font-bold mt-1">→</span> 
+                  <span>Repetir los ensayos de concurrencia en modo <em>profile</em> con múltiples iteraciones.</span>
+                </li>
               </ul>
             </motion.div>
           </div>
@@ -454,7 +463,7 @@ function App() {
         <div className="flex whitespace-nowrap animate-[marquee_20s_linear_infinite]">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex items-center gap-12 px-6 text-gray-400 font-bold text-2xl uppercase tracking-widest">
-              <span>Android</span> <span className="text-neon-green">•</span><span>Flutter</span> <span className="text-neon-green">•</span><span>Dart</span> <span className="text-neon-green">•</span><span>BSC Testnet</span> <span className="text-neon-green">•</span><span>Reown WalletKit</span> <span className="text-neon-green">•</span><span>AES-256</span> <span className="text-neon-green">•</span><span>NFC</span> <span className="text-neon-green">•</span>
+              <span>Wallet</span> <span className="text-neon-green">•</span><span>Flutter</span> <span className="text-neon-green">•</span><span>Dart</span> <span className="text-neon-green">•</span><span>BSC Testnet</span> <span className="text-neon-green">•</span><span>Reown WalletKit</span> <span className="text-neon-green">•</span><span>AES-256</span> <span className="text-neon-green">•</span><span>NFC</span> <span className="text-neon-green">•</span>
             </div>
           ))}
         </div>
